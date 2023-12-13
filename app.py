@@ -1,7 +1,7 @@
 import json
 import os
 from enum import Enum
-
+from icecream import ic 
 from helper import load_list, save_list
 
 # enum
@@ -27,7 +27,7 @@ def main():
     cars = load_list(data_file , cars)
     while(True):
      userSelection = menu()
-     if userSelection == Actions.PRINT: print(cars) 
+     if userSelection == Actions.PRINT: print_car()
      if userSelection == Actions.ADD: add_car()
      if userSelection == Actions.SEARCH: print(search())
      if userSelection == Actions.DELETE: del_car()
@@ -43,6 +43,12 @@ def exit_func():
     print("Bye")
     save_list(data_file , cars)
     exit()
+
+# print the cars
+def print_car():
+    for car in cars:
+        #    print(f'car brand: {car['brand']} - car model: {car['model']} - car color: {car['color']}')
+        ic(car)
 
 # search a car
 def search():
